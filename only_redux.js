@@ -1,19 +1,19 @@
-const { createStore } = require("redux");
+const { createStore } = require("redux"); //CreateStore from redux
 
 const initialState = {
-    age: 21
+    value: 0
 }
 
-const myReducer = (state = initialState, action) => {
+const myReducer = (state = initialState, action) => { //Reducer
     const newState = { ...state };
     if (action.type == "ADDTYPE") {
-        newState.age = newState.age + 1;
+        newState.value = newState.value + 1;
     }
     return newState;
 }
 
-const store = createStore(myReducer);
+const store = createStore(myReducer); // It is important to note Store always has state and Reducer
 
 console.log("InitialState", store.getState())
-store.dispatch({ type: "ADDTYPE" });
-console.log("ChangedState", store.getState())
+store.dispatch({ type: "ADDTYPE" }); //Action - Dispatching value to reducer present inside the store, which updates the value
+console.log("ChangedState", store.getState()) // get state is used to get the state of the store
